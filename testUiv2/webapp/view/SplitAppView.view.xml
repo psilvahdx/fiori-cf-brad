@@ -1,0 +1,17 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+	controllerName="test.testui.testUiv2.controller.SplitAppView" xmlns:html="http://www.w3.org/1999/xhtml">
+	<App id="app"
+		busy="{appView>/busy}"
+		busyIndicatorDelay="{appView>/delay}">
+		<pages>
+			<Page title="lgpd">
+				<content>
+					<SplitApp id="splitappid" masterButtonText="Master">
+						<masterPages></masterPages>
+						<detailPages></detailPages>
+					</SplitApp>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

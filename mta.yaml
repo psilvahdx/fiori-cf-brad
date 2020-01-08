@@ -1,0 +1,53 @@
+ID: brad-lgpd
+_schema-version: '2.1'
+version: 0.0.1
+modules:
+  - name: brad-lgpd-db
+    type: hdb
+    path: db
+    parameters:
+      memory: 256M
+      disk-quota: 256M
+    requires:
+      - name: brad-lgpd-db-hdi-container
+  - name: brad-lgpd-srv
+    type: nodejs
+    path: srv
+    parameters:
+      memory: 512M
+      disk-quota: 256M
+    provides:
+      - name: srv_api
+        properties:
+          url: '${default-url}'
+    requires:
+      - name: brad-lgpd-db-hdi-container
+  - name: testUiv2
+    type: html5
+    path: testUiv2
+    parameters:
+      disk-quota: 700M
+      memory: 256M
+    build-parameters:
+      builder: grunt
+    requires:
+      - name: uaa_brad-lgpd
+      - name: dest_brad-lgpd
+resources:
+  - name: brad-lgpd-db-hdi-container
+    type: com.sap.xs.hdi-container
+    properties:
+      hdi-container-name: '${service-name}'
+    parameters:
+      service: hanatrial
+  - name: uaa_brad-lgpd
+    parameters:
+      path: ./xs-security.json
+      service-plan: application
+      service: xsuaa
+    type: org.cloudfoundry.managed-service
+  - name: dest_brad-lgpd
+    parameters:
+      service-plan: lite
+      service: destination
+    type: org.cloudfoundry.managed-service
