@@ -17,6 +17,7 @@ sap.ui.define([
 			var oModel = this.getOwnerComponent().getModel("myModel");
 			//set the model on view to be used by the UI controls
 			this.getView().setModel(oModel);
+			
 		},
 		onSelectionChange: function (oEvent) {
 			

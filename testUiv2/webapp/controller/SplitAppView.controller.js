@@ -8,7 +8,6 @@ sap.ui.define([
 	return BaseController.extend("test.testui.testUiv2.controller.SplitAppView", {
 		onInit: function () {
 			var oViewModel;
-
 			oViewModel = new JSONModel({
 				busy: false,
 				delay: 0,
@@ -22,6 +21,5 @@ sap.ui.define([
 			});
 			this.setModel(oViewModel, "appView");
 		}
-
 	});
 });
